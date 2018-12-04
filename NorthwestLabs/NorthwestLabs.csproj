@@ -196,8 +196,22 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Assay.cs" />
+    <Compile Include="Models\Compound.cs" />
+    <Compile Include="Models\CompoundSample.cs" />
+    <Compile Include="Models\Confirmation.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Dose.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Test.cs" />
+    <Compile Include="Models\TestFileType.cs" />
+    <Compile Include="Models\TestInstance.cs" />
+    <Compile Include="Models\TestMaterials.cs" />
+    <Compile Include="Models\TestResults.cs" />
+    <Compile Include="Models\WorkOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
