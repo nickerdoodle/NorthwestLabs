@@ -16,7 +16,7 @@ namespace NorthwestLabs.Models
         [Key]
         public int TestInstanceID { get; set; }
 
-        public float AmountConsumed { get; set; }
+        public Double AmountConsumed { get; set; }
 
         public int UnitID { get; set; }
     }

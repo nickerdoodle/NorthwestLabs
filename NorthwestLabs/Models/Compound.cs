@@ -17,7 +17,7 @@ namespace NorthwestLabs.Models
 
         public String CompName { get; set; }
 
-        public float? Volume { get; set; }
+        public Double? Volume { get; set; }
 
         public int? VolumeUnitID { get; set; }
 
@@ -27,15 +27,15 @@ namespace NorthwestLabs.Models
 
         public DateTime? DateDue { get; set; }
 
-        public float? ClientWeight { get; set; }
+        public Double? ClientWeight { get; set; }
 
-        public float? MolecularMass { get; set; }
+        public Double? MolecularMass { get; set; }
 
         public int? ConfID { get; set; }
 
-        public float? ActualWeight { get; set; }
+        public Double? ActualWeight { get; set; }
 
-        public int? ActualWeightID { get; set; }
+        public int? ActualWeightUnitID { get; set; }
 
         public int? DoseID { get; set; }
     }

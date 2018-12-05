@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using NorthwestLabs.Models;
 
 namespace NorthwestLabs.DAL
 {
@@ -13,6 +14,7 @@ namespace NorthwestLabs.DAL
 
         }
 
-        
+        public DbSet<Compound> Compounds { get; set; }
+
     }
 }

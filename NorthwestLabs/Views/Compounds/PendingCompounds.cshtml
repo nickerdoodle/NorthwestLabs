@@ -1,0 +1,72 @@
+﻿
+@model IEnumerable<NorthwestLabs.Models.Compound>
+
+@{
+    ViewBag.Title = "Pending Compounds";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model=>model.LTNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompName)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.DateArrived)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReceivedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateDue)
+        </th>
+       
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LTNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompName)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.DateArrived)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceivedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateDue)
+            </td>
+            
+            <td>
+                <div class="btn-group-vertical">
+                    @Html.ActionLink("Fill out Compound Details", "Edit", new { id = item.LTNumber }, new { @class = "btn btn-primary btn-group" }) 
+                    @Html.ActionLink("Details", "Details", new { id = item.LTNumber }, new { @class = "btn btn-primary btn-group" }) 
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>
+
+

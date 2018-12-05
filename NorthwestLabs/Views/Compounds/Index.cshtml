@@ -1,0 +1,105 @@
+﻿@model IEnumerable<NorthwestLabs.Models.Compound>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Volume)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VolumeUnitID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateArrived)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReceivedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateDue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientWeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MolecularMass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConfID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActualWeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActualWeightUnitID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DoseID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Volume)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VolumeUnitID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateArrived)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReceivedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateDue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientWeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MolecularMass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConfID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActualWeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActualWeightUnitID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DoseID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LTNumber }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LTNumber }) |
+            
+        </td>
+    </tr>
+}
+
+</table>

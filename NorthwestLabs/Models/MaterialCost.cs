@@ -13,7 +13,7 @@ namespace NorthwestLabs.Models
         [Key]
         public int CostID { get; set; }
 
-        public float CostPerUnit { get; set; }
+        public Double CostPerUnit { get; set; }
 
         public DateTime DatePurchased { get; set; }
 

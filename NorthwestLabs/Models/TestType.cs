@@ -15,9 +15,9 @@ namespace NorthwestLabs.Models
 
         public String TestTypeDesc { get; set; }
 
-        public float ConcentrationNeeded { get; set; }
+        public Double ConcentrationNeeded { get; set; }
 
-        public float QuantityNeeded { get; set; }
+        public Double QuantityNeeded { get; set; }
 
         public int UnitID { get; set; }
     }

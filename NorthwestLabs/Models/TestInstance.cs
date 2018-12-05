@@ -25,7 +25,7 @@ namespace NorthwestLabs.Models
 
         public DateTime DateCompleted { get; set; }
 
-        public float BasePrice { get; set; }
+        public Double BasePrice { get; set; }
 
         public DateTime DateScheduled { get; set; }
 

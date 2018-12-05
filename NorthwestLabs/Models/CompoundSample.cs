@@ -16,11 +16,11 @@ namespace NorthwestLabs.Models
         [Key]
         public int LTNumber { get; set; }
 
-        public float Volume { get; set; }
+        public Double Volume { get; set; }
 
         public int VolumeUnitID { get; set; }
 
-        public float Weight { get; set; }
+        public Double Weight { get; set; }
 
         public int WeightUnitID { get; set; }
 
@@ -28,6 +28,6 @@ namespace NorthwestLabs.Models
 
         public int AssayID { get; set; }
 
-        public float Concentration { get; set; }
+        public Double Concentration { get; set; }
     }
 }

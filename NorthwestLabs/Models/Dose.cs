@@ -13,7 +13,7 @@ namespace NorthwestLabs.Models
         [Key]
         public int DoseID { get; set; }
 
-        public float MTD { get; set; }
+        public Double MTD { get; set; }
 
         public int UnitID { get; set; }
     }
