@@ -24,11 +24,11 @@ namespace NorthwestLabs.Models
 
         public String CustCity { get; set; }
 
-        public int? StateID { get; set; }
+        public int StateID { get; set; }
 
         public String Zip { get; set; }
 
-        public int? CountryID { get; set; }
+        public int CountryID { get; set; }
 
         public String Phone { get; set; }
 
@@ -40,6 +40,6 @@ namespace NorthwestLabs.Models
 
         public String Comments { get; set; }
 
-        public float? Balance { get; set; }
+        public float Balance { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace NorthwestLabs.Models
 
         public DateTime StartDate { get; set; }
 
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
         public int EmpID { get; set; }
 

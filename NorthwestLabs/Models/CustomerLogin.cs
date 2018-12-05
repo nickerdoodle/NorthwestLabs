@@ -15,8 +15,8 @@ namespace NorthwestLabs.Models
 
         public String CustPassword { get; set; }
 
-        public DateTime? LastLogin { get; set; }
+        public DateTime LastLogin { get; set; }
 
-        public DateTime? LastPasswordChange { get; set; }
+        public DateTime LastPasswordChange { get; set; }
     }
 }

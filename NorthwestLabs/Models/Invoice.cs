@@ -13,7 +13,7 @@ namespace NorthwestLabs.Models
      [Key]
         public int InvoiceID { get; set; }
 
-        public virtual WorkOrder WorkOrder { get; set; }
+        public int OrderID { get; set; }
 
         public DateTime PaymentDueDate { get; set; }
 

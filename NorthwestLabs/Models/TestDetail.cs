@@ -13,6 +13,7 @@ namespace NorthwestLabs.Models
         [Key]
         public int TestInstanceID { get; set; }
 
+        [Key]
         public int EmpID { get; set; }
 
         public float EmpHours { get; set; }

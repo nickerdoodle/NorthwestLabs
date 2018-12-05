@@ -21,6 +21,6 @@ namespace NorthwestLabs.Models
 
         public bool Priority { get; set; }
 
-        public DateTime ShipDate { get; set; }
+        public DateTime? ShipDate { get; set; }
     }
 }
