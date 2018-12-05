@@ -7,14 +7,14 @@ using System.Web;
 
 namespace NorthwestLabs.Models
 {
-    [Table("Dose")]
-    public class Dose
+    [Table("TestDetail")]
+    public class TestDetail
     {
         [Key]
-        public int DoseID { get; set; }
+        public int TestInstanceID { get; set; }
 
-        public float MTD { get; set; }
+        public int EmpID { get; set; }
 
-        public int UnitID { get; set; }
+        public float EmpHours { get; set; }
     }
 }
