@@ -4,17 +4,16 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
-using NorthwestLabs.Models;
 
 namespace NorthwestLabs.Models
 {
-    [Table("UnitOfMeasure")]
-    public class UnitOfMeasure
+    [Table("WeightUnit")]
+    public class WeightUnit
     {
         [Key]
-        public int UnitID { get; set; }
+        public int WeightUnitID { get; set; }
 
-        public String UnitDesc { get; set; }
+        public String WeightUnitDesc { get; set; }
 
         //public virtual ICollection<Compound> Compounds { get; set; }
     }

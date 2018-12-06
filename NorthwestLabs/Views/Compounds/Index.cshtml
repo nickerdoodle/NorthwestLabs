@@ -36,7 +36,7 @@
             @Html.DisplayNameFor(model => model.ClientWeight)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UnitOfMeasure.UnitDesc)
+            @Html.DisplayNameFor(model => model.WeightUnit.WeightUnitDesc)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.MolecularMass)
@@ -48,7 +48,7 @@
             @Html.DisplayNameFor(model => model.ActualWeight)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ActualWeightUnitID)
+           @* @Html.DisplayNameFor(model => model.ActualWeightUnitID)*@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DoseID)
@@ -83,7 +83,7 @@
             @Html.DisplayFor(modelItem => item.ClientWeight)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.UnitOfMeasure.UnitDesc)
+            @Html.DisplayFor(modelItem => item.WeightUnit.WeightUnitDesc)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.MolecularMass)
@@ -95,7 +95,7 @@
             @Html.DisplayFor(modelItem => item.ActualWeight)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ActualWeightUnitID)
+            @Html.DisplayFor(modelItem => item.WeightUnit.WeightUnitDesc)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DoseID)
@@ -109,3 +109,6 @@
 }
 
 </table>
+
+
+

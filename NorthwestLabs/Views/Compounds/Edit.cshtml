@@ -50,12 +50,19 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.VolumeUnitID, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.VolumeUnit.VolumeUnitDesc, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.VolumeUnitID, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.VolumeUnitID, "", new { @class = "text-danger" })
+            @Html.DropDownList("VolumeUnitID", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.VolumeUnit.VolumeUnitDesc, "", new { @class = "text-danger" })
         </div>
     </div>
+    @*<div class="form-group">
+        @Html.LabelFor(model => model.WeightUnit.WeightUnitDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("WeightUnitID", null, htmlAttributes: new { @class = "form-control" }))
+            @Html.ValidationMessageFor(model => model.ClientWeight, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
 
     <div class="form-group">
         @Html.LabelFor(model => model.DateArrived, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -90,10 +97,19 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.ClientWeightUnitID, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.WeightUnit.WeightUnitDesc, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.ClientWeightUnitID, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ClientWeightUnitID, "", new { @class = "text-danger" })
+            @Html.DropDownList("WeightUnitID", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ClientWeight, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ActualWeight, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ActualWeight, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ActualWeight, "", new { @class = "text-danger" })
+            <p class="text-info" style="font-size: medium">*The Weight Unit in the Client Weight will be applied to the Actual Weight*</p>
         </div>
     </div>
 
@@ -105,27 +121,12 @@
         </div>
     </div>
 
+
     <div class="form-group">
         @Html.LabelFor(model => model.ConfID, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.ConfID, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ConfID, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ActualWeight, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ActualWeight, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ActualWeight, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ActualWeightUnitID, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ActualWeightUnitID, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ActualWeightUnitID, "", new { @class = "text-danger" })
+            @Html.DisplayFor(model => model.ConfID, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.HiddenFor(model => model.ConfID)
         </div>
     </div>
 

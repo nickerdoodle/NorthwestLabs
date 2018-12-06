@@ -18,7 +18,7 @@ namespace NorthwestLabs.Controllers
         // GET: Materials
         public ActionResult Index()
         {
-            var materials = db.Materials.Include(m => m.UnitOfMeasure);
+            var materials = db.Materials.Include(m => m.WeightUnit);
             return View(materials.ToList());
         }
 
@@ -40,8 +40,9 @@ namespace NorthwestLabs.Controllers
         // GET: Materials/Create
         public ActionResult Create()
         {
-            ViewBag.UnitID = new SelectList(db.UnitOfMeasures, "UnitID", "UoMDesc");
+            ViewBag.WeightUnitID = new SelectList(db.WeightUnits, "WeightUnitID", "WeightUnitDesc");
             return View();
+                       
         }
 
         // POST: Materials/Create
@@ -49,7 +50,7 @@ namespace NorthwestLabs.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaterialID,MaterialType,QuantityOnHand,UnitID,CostID")] Material material)
+        public ActionResult Create (Material material)
         {
             if (ModelState.IsValid)
             {
@@ -58,8 +59,9 @@ namespace NorthwestLabs.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UnitID = new SelectList(db.UnitOfMeasures, "UnitID", "UoMDesc", material.UnitID);
+            ViewBag.WeightUnitID = new SelectList(db.WeightUnits, "WeightUnitID", "WeightUnitDesc", material.WeightUnit.WeightUnitID);
             return View(material);
+            
         }
 
         // GET: Materials/Edit/5
@@ -74,7 +76,7 @@ namespace NorthwestLabs.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.UnitID = new SelectList(db.UnitOfMeasures, "UnitID", "UoMDesc", material.UnitID);
+            ViewBag.WeightUnitID = new SelectList(db.WeightUnits, "WeightUnitID", "WeightUnitDesc", material.WeightUnit.WeightUnitID);
             return View(material);
         }
 
@@ -91,7 +93,7 @@ namespace NorthwestLabs.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UnitID = new SelectList(db.UnitOfMeasures, "UnitID", "UoMDesc", material.UnitID);
+            ViewBag.WeightUnitID = new SelectList(db.WeightUnits, "WeightUnitID", "WeightUnitDesc", material.WeightUnit.WeightUnitID);
             return View(material);
         }
 

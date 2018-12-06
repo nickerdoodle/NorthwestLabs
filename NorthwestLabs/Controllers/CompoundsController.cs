@@ -50,6 +50,7 @@ namespace NorthwestLabs.Controllers
         // GET: Compounds/Create
         public ActionResult Create()
         {
+            ViewBag.WeightUnitID = new SelectList(db.WeightUnits, "WeightUnitID", "WeightUnitDesc");
             return View();
         }
 
@@ -82,6 +83,8 @@ namespace NorthwestLabs.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.WeightUnitID = new SelectList(db.WeightUnits, "WeightUnitID", "WeightUnitDesc");
+            ViewBag.VolumeUnitID = new SelectList(db.VolumeUnits, "VolumeUnitID", "VolumeUnitDesc");
             return View(compound);
         }
 
