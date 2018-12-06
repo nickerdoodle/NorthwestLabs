@@ -185,13 +185,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\BundleConfig2.cs" />
+    <Compile Include="App_Start\BundleConfig3.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\FilterConfig2.cs" />
+    <Compile Include="App_Start\FilterConfig3.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\RouteConfig2.cs" />
+    <Compile Include="App_Start\RouteConfig3.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SeattleController.cs" />
     <Compile Include="DAL\NorthwestLabsContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -288,6 +295,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Seattle\Report.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
