@@ -21,6 +21,7 @@ namespace NorthwestLabs.DAL
         public DbSet<WorkOrder>WorkOrders { get; set; }
         public DbSet<Customer>Customers { get; set; }
         public DbSet<Material>Materials { get; set; }
+        public DbSet<MaterialsUsed>MaterialsUseds { get; set; }
 
        
 
