@@ -298,6 +298,9 @@
     <Content Include="Views\Compounds\Index.cshtml" />
     <Content Include="Views\Compounds\PendingCompounds.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\PharmacologyCatalog.cshtml" />
+    <Content Include="Views\Customer\ProtocolCatalog.cshtml" />
+    <Content Include="Views\Customer\GetQuote.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -332,9 +335,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>60670</DevelopmentServerPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:60670/</IISUrl>
+          <IISUrl>http://localhost:61429/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

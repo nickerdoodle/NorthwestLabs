@@ -1,0 +1,46 @@
+﻿@model IEnumerable<NorthwestLabs.Models.Assay>
+
+@{
+    ViewBag.Title = "Request a Quote";
+}
+@using (Html.BeginForm())
+{
+    <h2>Request a Quote</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DaysToComplete)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.assayType.TypeDescription)
+            </th>
+            <th>
+                Include Assay in Quote?
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DaysToComplete)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.assayType.TypeDescription)
+                </td>
+                <td>
+                    @Html.RadioButtonFor()
+                </td>
+            </tr>
+        }
+    </table>
+
+    <input type="submit" class="btn btnprimary" />
+}

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NorthwestLabs.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,8 @@ namespace NorthwestLabs.Controllers
 {
     public class CustomerController : Controller
     {
+        private NorthwestLabsContext db = new NorthwestLabsContext();
+
         // GET: Customer
         public ActionResult Index()
         {
@@ -24,7 +27,14 @@ namespace NorthwestLabs.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult GetQuote()
+        {
+            return View(db.Assays.ToList());
+        }
+        
+        [HttpPost]
+        public ActionResult GetQuote(FormCollection form)
         {
             return View();
         }

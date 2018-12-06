@@ -16,5 +16,6 @@ namespace NorthwestLabs.DAL
 
         public DbSet<Compound> Compounds { get; set; }
 
+        public System.Data.Entity.DbSet<NorthwestLabs.Models.Assay> Assays { get; set; }
     }
 }
