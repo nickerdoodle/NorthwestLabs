@@ -3,10 +3,9 @@
 @{
     ViewBag.Title = "Request a Quote";
 }
-@using (Html.BeginForm())
-{
-    <h2>Request a Quote</h2>
 
+<h2>Request a Quote</h2>
+<div id="Assay">
     <table class="table">
         <tr>
             <th>
@@ -36,11 +35,17 @@
                     @Html.DisplayFor(modelItem => item.assayType.TypeDescription)
                 </td>
                 <td>
-                    @Html.DropDownList("Choose an Option", )
+                    <input type="checkbox" checked="checked" value="@item.AssayID" />
                 </td>
             </tr>
         }
     </table>
+</div>
 
-    <input type="submit" class="btn btnprimary" />
-}
+@Html.ActionLink("Submit Quote Request", "SubmitQuote", , new{ @class="btn btn-primary"})
+<script>
+    var Assays = []
+    $(document).ready(function () {
+        $("#Assay input:checkbox:checked").each(function () { Assays.push($(this).val()); });
+    document.getElementById("quoteAssays").value = Assays;
+</script>
