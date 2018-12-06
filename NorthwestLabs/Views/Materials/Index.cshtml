@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UnitOfMeasure.UnitDesc)
+            @Html.DisplayNameFor(model => model.WeightUnit.WeightUnitDesc)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.MaterialDesc)
@@ -29,7 +29,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.UnitOfMeasure.UnitDesc)
+            @Html.DisplayFor(modelItem => item.WeightUnit.WeightUnitDesc)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.MaterialDesc)

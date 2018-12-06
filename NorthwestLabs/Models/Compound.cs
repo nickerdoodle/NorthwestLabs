@@ -21,6 +21,7 @@ namespace NorthwestLabs.Models
         public Double? Volume { get; set; }
 
         public int? VolumeUnitID { get; set; }
+        public virtual VolumeUnit VolumeUnit { get; set; }
 
         public DateTime? DateArrived { get; set; }
 
@@ -30,16 +31,14 @@ namespace NorthwestLabs.Models
 
         public Double? ClientWeight { get; set; }
 
-        public virtual int? ClientWeightUnitID { get; set; }
-        public virtual UnitOfMeasure UnitOfMeasure { get; set; }
+        public virtual int? WeightUnitID { get; set; }
+        public virtual WeightUnit WeightUnit { get; set; }
 
         public Double? MolecularMass { get; set; }
 
         public int? ConfID { get; set; }
 
         public Double? ActualWeight { get; set; }
-
-        public int? ActualWeightUnitID { get; set; }
 
         public int? DoseID { get; set; }
     }

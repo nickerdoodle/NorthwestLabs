@@ -19,6 +19,8 @@ namespace NorthwestLabs.Models
 
         public Double QuantityNeeded { get; set; }
 
-        public int UnitID { get; set; }
+        public int VolumeUnitID { get; set; }
+
+        public virtual VolumeUnit VolumeUnit { get; set; }
     }
 }

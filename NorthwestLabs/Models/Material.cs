@@ -15,13 +15,13 @@ namespace NorthwestLabs.Models
 
         public String MaterialDesc { get; set; }
 
-        public int QuantityOnHand { get; set; }
+        public Double QuantityOnHand { get; set; }
 
-        public virtual int UnitID { get; set; }
-        public virtual UnitOfMeasure UnitOfMeasure { get; set; }
+        public virtual int WeightUnitID { get; set; }
+        public virtual WeightUnit WeightUnit { get; set; }
 
         public virtual int CostID { get; set; }
-        public virtual ICollection<MaterialCost> MaterialCosts { get; set; }
+       
 
 
     }
