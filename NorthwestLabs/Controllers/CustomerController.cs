@@ -33,6 +33,7 @@ namespace NorthwestLabs.Controllers
         [HttpGet]
         public ActionResult GetQuote()
         {
+            
             return View(db.Assays.ToList());
         }
         
@@ -45,8 +46,8 @@ namespace NorthwestLabs.Controllers
             Customer customer = db.Customers.Find(ClientID);
 
             ViewBag.Name = customer.CustFirstName + " " + customer.CustLastName;
-            ViewBag.Email = customer.Email;
-            if (customer.CustFirstName != null && customer.Email != null)
+            ViewBag.Email = customer.CustEmail;
+            if (customer.CustFirstName != null && customer.CustEmail != null)
             {
                 SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
 
@@ -59,22 +60,17 @@ namespace NorthwestLabs.Controllers
 
                 //Setting From , To and CC
                 mail.From = new MailAddress("labsnorthwest0@gmail.com", "Northwest Labs");
-                mail.To.Add(new MailAddress(customer.Email));
+                mail.To.Add(new MailAddress(customer.CustEmail));
                 mail.CC.Add(new MailAddress("labsnorthwest0@gmail.com"));
                 mail.Subject = "Northwest Labs Quote Request Submitted Successfully";
-                mail.Body = "Thank you, " + customer.CustFirstName + " " + customer.CustLastName + ", for contacting Northwest Labs! A sales representative will review your request and respond promptly.";
+                mail.Body = "Thank you, " + customer.CustFirstName + " " + customer.CustLastName + ", for contacting Northwest Labs! We will A sales representative will review your request and respond promptly.";
                 mail.BodyEncoding = Encoding.UTF8;
                 mail.IsBodyHtml = true;
 
 
                 smtpClient.Send(mail);
             }
-            return View("QuoteConf", form);
-        }
-
-        public ActionResult QuoteConf(FormCollection form)
-        {
-            return View();
+            return View("QuoteConf");
         }
     }
 }

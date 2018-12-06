@@ -23,13 +23,7 @@ namespace NorthwestLabs.DAL
         public DbSet<Customer>Customers { get; set; }
         public DbSet<Material>Materials { get; set; }
         //public DbSet<MaterialsUsed>MaterialsUseds { get; set; }
-
-<<<<<<< HEAD
-        public System.Data.Entity.DbSet<NorthwestLabs.Models.Assay> Assays { get; set; }
-=======
-       
-
         
->>>>>>> adae6a77cceb6bfbccffa7dd682c065a43892ada
+        public DbSet<NorthwestLabs.Models.Assay> Assays { get; set; }
     }
 }

@@ -16,15 +16,14 @@ namespace NorthwestLabs.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Northwest Labs is a leader in compound analysis. We pride ourselves in building customer trust" +
+                " by promptly and reliably delivering results for your products. We have grown in recent years and expect to continue to grow in the future.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }
