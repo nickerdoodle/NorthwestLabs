@@ -1,0 +1,132 @@
+﻿@model NorthwestLabs.Models.Compound
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Compound</h4>
+    <hr />
+    
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LTNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LTNumber)
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderID)
+        </dd>
+        <br />
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompName)
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.Volume)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Volume)
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.VolumeUnitID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VolumeUnitID)
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.DateArrived)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateArrived)
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.ReceivedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReceivedBy)
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.DateDue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateDue)
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientWeight)
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.MolecularMass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MolecularMass)
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.ConfID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConfID)
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.ActualWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActualWeight)
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.ActualWeightUnitID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActualWeightUnitID)
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.DoseID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DoseID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LTNumber }) |
+    @Html.ActionLink("Back to List", "PendingCompounds")
+</p>
