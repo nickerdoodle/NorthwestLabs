@@ -196,6 +196,8 @@
     <Compile Include="App_Start\RouteConfig3.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CompoundsController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SeattleController.cs" />
@@ -241,6 +243,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\MyStyles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -295,10 +298,24 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+
     <Content Include="Views\Seattle\Report.cshtml" />
+
+    <Content Include="Views\Compounds\Create.cshtml" />
+    <Content Include="Views\Compounds\Delete.cshtml" />
+    <Content Include="Views\Compounds\Details.cshtml" />
+    <Content Include="Views\Compounds\Edit.cshtml" />
+    <Content Include="Views\Compounds\Index.cshtml" />
+    <Content Include="Views\Compounds\PendingCompounds.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\PharmacologyCatalog.cshtml" />
+    <Content Include="Views\Customer\ProtocolCatalog.cshtml" />
+    <Content Include="Views\Customer\GetQuote.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -329,9 +346,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>60670</DevelopmentServerPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:60670/</IISUrl>
+          <IISUrl>http://localhost:61429/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

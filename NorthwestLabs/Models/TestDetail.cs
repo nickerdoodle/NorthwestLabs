@@ -16,6 +16,6 @@ namespace NorthwestLabs.Models
         [Key]
         public int EmpID { get; set; }
 
-        public float EmpHours { get; set; }
+        public Double EmpHours { get; set; }
     }
 }

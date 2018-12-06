@@ -15,7 +15,6 @@ namespace NorthwestLabs.Models
 
         public String CustFirstName { get; set; }
 
-
         public String CustLastName { get; set; }
 
         public String CustAddress1 { get; set; }
@@ -40,6 +39,6 @@ namespace NorthwestLabs.Models
 
         public String Comments { get; set; }
 
-        public float Balance { get; set; }
+        public Double Balance { get; set; }
     }
 }

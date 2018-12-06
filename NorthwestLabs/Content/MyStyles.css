@@ -1,0 +1,23 @@
+﻿body {
+    font-family: 'Trebuchet MS';
+    font-size: 12pt;
+    background-image: url(Images/graybackgroundimg2.jpg);
+    background-size: cover;
+    color: aliceblue;
+}
+
+.jumbotron {
+    background-image: url(Images//bluebackgroundimg.jpg);
+    background-size: cover;
+    /*background-color: #11114c;*/
+}
+
+.jumbotron-gray {
+    background-image: none;
+    background-color: aliceblue;
+    color: black;
+}
+
+.bordered {
+    border-left: 2px solid aliceblue;
+}

@@ -13,7 +13,7 @@ namespace NorthwestLabs.Models
         [Key]
         public int WageID { get; set; }
 
-        public float HourlyWage { get; set; }
+        public Double HourlyWage { get; set; }
 
         public DateTime StartDate { get; set; }
 

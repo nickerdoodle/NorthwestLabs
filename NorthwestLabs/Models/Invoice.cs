@@ -19,14 +19,14 @@ namespace NorthwestLabs.Models
 
         public DateTime EarlyPMTDate { get; set; }
 
-        public float EarlyPMTDiscount { get; set; }
+        public Double EarlyPMTDiscount { get; set; }
 
-        public float Price { get; set; }
+        public Double Price { get; set; }
 
         public DateTime DateCharged { get; set; }
 
-        public float? Advance { get; set; }
+        public Double? Advance { get; set; }
 
-        public float BalanceDue { get; set; }
+        public Double BalanceDue { get; set; }
     }
 }

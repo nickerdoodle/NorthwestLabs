@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "New Customer Information";
+}
+
+<h2>Northwest Labs New Customer Information</h2>
+<hr />
+<div class="col-md-6">
+    <h4>
+        View Our Services Catalogs:
+    </h4>
+    <a href=@Url.Action("PharmacologyCatalog")>
+        <input type="button" class="btn btn-primary btn-block" value="Pharmacology Catalog" />
+    </a>
+    <a href=@Url.Action("ProtocolCatalog")>
+        <input type="button" class="btn btn-primary btn-block" value="Protocols Catalog" />
+    </a>
+    
+</div>
+
+<div class="col-md-6 text-center">
+    <h4>
+        Submit an Online Quote Request Here:
+    </h4>
+    <a href=@Url.Action("GetQuote") class="text-center">
+        <input type="button" class="btn btn-primary btn-lg" value="Get a Quote!" />
+    </a>
+</div>
+
+
