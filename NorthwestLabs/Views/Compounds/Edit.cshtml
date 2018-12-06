@@ -15,13 +15,13 @@
     <h4>Compound</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-   @* @Html.HiddenFor(model => model.LTNumber)*@
+    @* @Html.HiddenFor(model => model.LTNumber)*@
 
     <div class="form-group">
         @Html.LabelFor(model => model.LTNumber, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DisplayFor(model => model.LTNumber, new { htmlAttributes = new { @class = "form-control" } })
-           
+            @Html.HiddenFor(model => model.LTNumber)
         </div>
     </div>
 
@@ -29,6 +29,7 @@
         @Html.LabelFor(model => model.OrderID, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DisplayFor(model => model.OrderID, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.HiddenFor(model => model.OrderID)
         </div>
     </div>
 
@@ -36,6 +37,7 @@
         @Html.LabelFor(model => model.CompName, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DisplayFor(model => model.CompName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.HiddenFor(model => model.CompName)
         </div>
     </div>
 
@@ -84,6 +86,14 @@
         <div class="col-md-10">
             @Html.EditorFor(model => model.ClientWeight, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.ClientWeight, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ClientWeightUnitID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ClientWeightUnitID, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ClientWeightUnitID, "", new { @class = "text-danger" })
         </div>
     </div>
 

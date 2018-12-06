@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using NorthwestLabs.Models;
 
 namespace NorthwestLabs.Models
 {
@@ -14,5 +15,7 @@ namespace NorthwestLabs.Models
         public int UnitID { get; set; }
 
         public String UoMDesc { get; set; }
+
+        public virtual ICollection<Compound> Compounds { get; set; }
     }
 }

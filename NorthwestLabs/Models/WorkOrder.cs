@@ -13,7 +13,8 @@ namespace NorthwestLabs.Models
         [Key]
         public int OrderID { get; set; }
 
-        public int CustID { get; set; }
+        public virtual int CustID { get; set; }
+        public virtual Customer Customer { get; set; }
 
         public String CustInstructions { get; set; }
 

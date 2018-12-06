@@ -192,8 +192,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CompoundsController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TestInstancesController.cs" />
+    <Compile Include="Controllers\WorkOrdersController.cs" />
     <Compile Include="DAL\NorthwestLabsContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -298,6 +301,22 @@
     <Content Include="Views\Compounds\Index.cshtml" />
     <Content Include="Views\Compounds\PendingCompounds.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\TestInstances\Create.cshtml" />
+    <Content Include="Views\TestInstances\Delete.cshtml" />
+    <Content Include="Views\TestInstances\Details.cshtml" />
+    <Content Include="Views\TestInstances\Edit.cshtml" />
+    <Content Include="Views\TestInstances\Index.cshtml" />
+    <Content Include="Views\WorkOrders\Create.cshtml" />
+    <Content Include="Views\WorkOrders\Delete.cshtml" />
+    <Content Include="Views\WorkOrders\Details.cshtml" />
+    <Content Include="Views\WorkOrders\Edit.cshtml" />
+    <Content Include="Views\WorkOrders\Index.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\WorkOrders\PriorityList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

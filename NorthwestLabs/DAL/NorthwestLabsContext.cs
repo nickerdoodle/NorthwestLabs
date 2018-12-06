@@ -15,6 +15,15 @@ namespace NorthwestLabs.DAL
         }
 
         public DbSet<Compound> Compounds { get; set; }
+        public DbSet<TestInstance>TestInstances { get; set; }
+        public DbSet<TestType>TestTypes { get; set; }
+        public DbSet<UnitOfMeasure>UnitOfMeasures { get; set; }
+        public DbSet<WorkOrder>WorkOrders { get; set; }
+        public DbSet<Customer>Customers { get; set; }
+        public DbSet<Material>Materials { get; set; }
 
+       
+
+        
     }
 }
