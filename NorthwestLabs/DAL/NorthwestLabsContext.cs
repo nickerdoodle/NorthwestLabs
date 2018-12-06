@@ -15,7 +15,21 @@ namespace NorthwestLabs.DAL
         }
 
         public DbSet<Compound> Compounds { get; set; }
+        public DbSet<TestInstance>TestInstances { get; set; }
+        public DbSet<TestType>TestTypes { get; set; }
+        public DbSet<VolumeUnit>VolumeUnits { get; set; }
+        public DbSet<WeightUnit>WeightUnits { get; set; }
+        public DbSet<WorkOrder>WorkOrders { get; set; }
+        public DbSet<Customer>Customers { get; set; }
+        public DbSet<Material>Materials { get; set; }
+        //public DbSet<MaterialsUsed>MaterialsUseds { get; set; }
 
+<<<<<<< HEAD
         public System.Data.Entity.DbSet<NorthwestLabs.Models.Assay> Assays { get; set; }
+=======
+       
+
+        
+>>>>>>> adae6a77cceb6bfbccffa7dd682c065a43892ada
     }
 }

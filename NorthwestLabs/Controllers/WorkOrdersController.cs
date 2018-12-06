@@ -11,118 +11,119 @@ using NorthwestLabs.Models;
 
 namespace NorthwestLabs.Controllers
 {
-    public class CompoundsController : Controller
+    public class WorkOrdersController : Controller
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();
 
-        // GET: Compounds
+        // GET: WorkOrders
         public ActionResult Index()
         {
-            return View(db.Compounds.ToList());
+            var workOrders = db.WorkOrders.Include(w => w.Customer);
+            return View(workOrders.ToList());
+
         }
 
-        // GET: Compounds/Details/5
+        public ActionResult PriorityList()
+        {
+            var priority = db.Database.SqlQuery<WorkOrder>("SELECT * FROM WorkOrder WHERE Priority = 1 ORDER BY ShipDate; ");
+            return View(priority);
+        }
+
+        // GET: WorkOrders/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Compound compound = db.Compounds.Find(id);
-            if (compound == null)
+            WorkOrder workOrder = db.WorkOrders.Find(id);
+            if (workOrder == null)
             {
                 return HttpNotFound();
             }
-            return View(compound);
+            return View(workOrder);
         }
 
-        public ActionResult PendingCompounds()
-        {
-            var pending = db.Database.SqlQuery<Compound>(
-                "SELECT * FROM Compound WHERE LTNumber " +
-                "IS NOT NULL AND OrderID IS " +
-                "NOT NULL AND CompName IS NOT NULL " +
-                "AND Volume IS NULL; ").ToList();
-
-            return View(pending);
-        }
-
-        // GET: Compounds/Create
+        // GET: WorkOrders/Create
         public ActionResult Create()
         {
+            ViewBag.CustID = new SelectList(db.Customers, "CustID", "CustFirstName");
             return View();
         }
 
-        // POST: Compounds/Create
+        // POST: WorkOrders/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LTNumber,OrderID,CompName,Volume,VolumeUnitID,DateArrived,ReceivedBy,DateDue,ClientWeight,MolecularMass,ConfID,ActualWeight,ActualWeightID,DoseID")] Compound compound)
+        public ActionResult Create([Bind(Include = "OrderID,CustID,CustInstructions,SpecialDiscount,Priority,ShipDate")] WorkOrder workOrder)
         {
             if (ModelState.IsValid)
             {
-                db.Compounds.Add(compound);
+                db.WorkOrders.Add(workOrder);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(compound);
+            ViewBag.CustID = new SelectList(db.Customers, "CustID", "CustFirstName", workOrder.CustID);
+            return View(workOrder);
         }
 
-        // GET: Compounds/Edit/5
+        // GET: WorkOrders/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Compound compound = db.Compounds.Find(id);
-            if (compound == null)
+            WorkOrder workOrder = db.WorkOrders.Find(id);
+            if (workOrder == null)
             {
                 return HttpNotFound();
             }
-            return View(compound);
+            ViewBag.CustID = new SelectList(db.Customers, "CustID", "CustFirstName", workOrder.CustID);
+            return View(workOrder);
         }
 
-        // POST: Compounds/Edit/5
+        // POST: WorkOrders/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LTNumber,OrderID,CompName,Volume,VolumeUnitID,DateArrived,ReceivedBy,DateDue,ClientWeight,MolecularMass,ConfID,ActualWeight,ActualWeightID,DoseID")] Compound compound)
+        public ActionResult Edit([Bind(Include = "OrderID,CustID,CustInstructions,SpecialDiscount,Priority,ShipDate")] WorkOrder workOrder)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(compound).State = EntityState.Modified;
+                db.Entry(workOrder).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("PendingCompounds");
+                return RedirectToAction("Index");
             }
-            return View(compound);
+            ViewBag.CustID = new SelectList(db.Customers, "CustID", "CustFirstName", workOrder.CustID);
+            return View(workOrder);
         }
 
-        // GET: Compounds/Delete/5
+        // GET: WorkOrders/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Compound compound = db.Compounds.Find(id);
-            if (compound == null)
+            WorkOrder workOrder = db.WorkOrders.Find(id);
+            if (workOrder == null)
             {
                 return HttpNotFound();
             }
-            return View(compound);
+            return View(workOrder);
         }
 
-        // POST: Compounds/Delete/5
+        // POST: WorkOrders/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Compound compound = db.Compounds.Find(id);
-            db.Compounds.Remove(compound);
+            WorkOrder workOrder = db.WorkOrders.Find(id);
+            db.WorkOrders.Remove(workOrder);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

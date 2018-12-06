@@ -1,0 +1,58 @@
+﻿@model IEnumerable<NorthwestLabs.Models.WorkOrder>
+
+@{
+    ViewBag.Title = "Priority List";
+}
+
+<h2>Priority List</h2>
+
+<p>
+    @Html.ActionLink("Schedule Changes","Edit","Schedule")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.CustID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustInstructions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SpecialDiscount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Priority)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShipDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="@Url.Action("Details","Customers", new { id = item.Customer.CustID }  )">@Html.DisplayFor(modelItem => item.Customer.CustID)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustInstructions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpecialDiscount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Priority)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShipDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.OrderID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.OrderID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.OrderID })
+            </td>
+        </tr>
+    }
+
+</table>

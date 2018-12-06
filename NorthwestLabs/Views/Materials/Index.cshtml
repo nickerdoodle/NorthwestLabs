@@ -1,0 +1,51 @@
+﻿@model IEnumerable<NorthwestLabs.Models.Material>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitOfMeasure.UnitDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaterialDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantityOnHand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CostID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitOfMeasure.UnitDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaterialDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuantityOnHand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CostID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaterialID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaterialID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaterialID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -11,118 +11,107 @@ using NorthwestLabs.Models;
 
 namespace NorthwestLabs.Controllers
 {
-    public class CompoundsController : Controller
+    public class CustomersController : Controller
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();
 
-        // GET: Compounds
+        // GET: Customers
         public ActionResult Index()
         {
-            return View(db.Compounds.ToList());
+            return View(db.Customers.ToList());
         }
 
-        // GET: Compounds/Details/5
+        // GET: Customers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Compound compound = db.Compounds.Find(id);
-            if (compound == null)
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            return View(compound);
+            return View(customer);
         }
 
-        public ActionResult PendingCompounds()
-        {
-            var pending = db.Database.SqlQuery<Compound>(
-                "SELECT * FROM Compound WHERE LTNumber " +
-                "IS NOT NULL AND OrderID IS " +
-                "NOT NULL AND CompName IS NOT NULL " +
-                "AND Volume IS NULL; ").ToList();
-
-            return View(pending);
-        }
-
-        // GET: Compounds/Create
+        // GET: Customers/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Compounds/Create
+        // POST: Customers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LTNumber,OrderID,CompName,Volume,VolumeUnitID,DateArrived,ReceivedBy,DateDue,ClientWeight,MolecularMass,ConfID,ActualWeight,ActualWeightID,DoseID")] Compound compound)
+        public ActionResult Create([Bind(Include = "CustID,CustFirstName,CustLastName,CustAddress1,CustAddress2,CustCity,StateID,CustZip,CountryID,CustPhone,CustEmail,PaymentInfo,CustUserName,Comments,Balance")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                db.Compounds.Add(compound);
+                db.Customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(compound);
+            return View(customer);
         }
 
-        // GET: Compounds/Edit/5
+        // GET: Customers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Compound compound = db.Compounds.Find(id);
-            if (compound == null)
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            return View(compound);
+            return View(customer);
         }
 
-        // POST: Compounds/Edit/5
+        // POST: Customers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LTNumber,OrderID,CompName,Volume,VolumeUnitID,DateArrived,ReceivedBy,DateDue,ClientWeight,MolecularMass,ConfID,ActualWeight,ActualWeightID,DoseID")] Compound compound)
+        public ActionResult Edit([Bind(Include = "CustID,CustFirstName,CustLastName,CustAddress1,CustAddress2,CustCity,StateID,CustZip,CountryID,CustPhone,CustEmail,PaymentInfo,CustUserName,Comments,Balance")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(compound).State = EntityState.Modified;
+                db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("PendingCompounds");
+                return RedirectToAction("Index");
             }
-            return View(compound);
+            return View(customer);
         }
 
-        // GET: Compounds/Delete/5
+        // GET: Customers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Compound compound = db.Compounds.Find(id);
-            if (compound == null)
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            return View(compound);
+            return View(customer);
         }
 
-        // POST: Compounds/Delete/5
+        // POST: Customers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Compound compound = db.Compounds.Find(id);
-            db.Compounds.Remove(compound);
+            Customer customer = db.Customers.Find(id);
+            db.Customers.Remove(customer);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

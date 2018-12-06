@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using NorthwestLabs.Models;
 
 namespace NorthwestLabs.Models
 {
@@ -28,6 +29,9 @@ namespace NorthwestLabs.Models
         public DateTime? DateDue { get; set; }
 
         public Double? ClientWeight { get; set; }
+
+        public virtual int? ClientWeightUnitID { get; set; }
+        public virtual UnitOfMeasure UnitOfMeasure { get; set; }
 
         public Double? MolecularMass { get; set; }
 

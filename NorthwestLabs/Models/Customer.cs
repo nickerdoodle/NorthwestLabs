@@ -25,13 +25,13 @@ namespace NorthwestLabs.Models
 
         public int StateID { get; set; }
 
-        public String Zip { get; set; }
+        public String CustZip { get; set; }
 
         public int CountryID { get; set; }
 
-        public String Phone { get; set; }
+        public String CustPhone { get; set; }
 
-        public String Email { get; set; }
+        public String CustEmail { get; set; }
 
         public String PaymentInfo { get; set; }
 
@@ -39,6 +39,8 @@ namespace NorthwestLabs.Models
 
         public String Comments { get; set; }
 
-        public Double Balance { get; set; }
+        public Decimal Balance { get; set; }
+
+        //public virtual ICollection<WorkOrder> WorkOrders { get; set; }
     }
 }

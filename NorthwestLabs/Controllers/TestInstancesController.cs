@@ -11,118 +11,112 @@ using NorthwestLabs.Models;
 
 namespace NorthwestLabs.Controllers
 {
-    public class CompoundsController : Controller
+    public class TestInstancesController : Controller
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();
 
-        // GET: Compounds
+        // GET: TestInstances
         public ActionResult Index()
         {
-            return View(db.Compounds.ToList());
+            var testInstances = db.TestInstances.Include(t => t.TestType);
+            return View(testInstances.ToList());
         }
 
-        // GET: Compounds/Details/5
+        // GET: TestInstances/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Compound compound = db.Compounds.Find(id);
-            if (compound == null)
+            TestInstance testInstance = db.TestInstances.Find(id);
+            if (testInstance == null)
             {
                 return HttpNotFound();
             }
-            return View(compound);
+            return View(testInstance);
         }
 
-        public ActionResult PendingCompounds()
-        {
-            var pending = db.Database.SqlQuery<Compound>(
-                "SELECT * FROM Compound WHERE LTNumber " +
-                "IS NOT NULL AND OrderID IS " +
-                "NOT NULL AND CompName IS NOT NULL " +
-                "AND Volume IS NULL; ").ToList();
-
-            return View(pending);
-        }
-
-        // GET: Compounds/Create
+        // GET: TestInstances/Create
         public ActionResult Create()
         {
+            ViewBag.TestTypeID = new SelectList(db.TestTypes, "TestTypeID", "TestTypeDesc");
             return View();
         }
 
-        // POST: Compounds/Create
+        // POST: TestInstances/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LTNumber,OrderID,CompName,Volume,VolumeUnitID,DateArrived,ReceivedBy,DateDue,ClientWeight,MolecularMass,ConfID,ActualWeight,ActualWeightID,DoseID")] Compound compound)
+        public ActionResult Create([Bind(Include = "TestInstanceID,TestTypeID,AssayID,SequenceID,Required,Approved,DateCompleted,BasePrice,DateScheduled,Rerun,RerunComments,Success")] TestInstance testInstance)
         {
             if (ModelState.IsValid)
             {
-                db.Compounds.Add(compound);
+                db.TestInstances.Add(testInstance);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(compound);
+            ViewBag.TestTypeID = new SelectList(db.TestTypes, "TestTypeID", "TestTypeDesc", testInstance.TestTypeID);
+            return View(testInstance);
         }
 
-        // GET: Compounds/Edit/5
+        // GET: TestInstances/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Compound compound = db.Compounds.Find(id);
-            if (compound == null)
+            TestInstance testInstance = db.TestInstances.Find(id);
+            if (testInstance == null)
             {
                 return HttpNotFound();
             }
-            return View(compound);
+            ViewBag.TestTypeID = new SelectList(db.TestTypes, "TestTypeID", "TestTypeDesc", testInstance.TestTypeID);
+            return View(testInstance);
         }
 
-        // POST: Compounds/Edit/5
+        // POST: TestInstances/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LTNumber,OrderID,CompName,Volume,VolumeUnitID,DateArrived,ReceivedBy,DateDue,ClientWeight,MolecularMass,ConfID,ActualWeight,ActualWeightID,DoseID")] Compound compound)
+        public ActionResult Edit([Bind(Include = "TestInstanceID,TestTypeID,AssayID,SequenceID,Required,Approved,DateCompleted,BasePrice,DateScheduled,Rerun,RerunComments,Success")] TestInstance testInstance)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(compound).State = EntityState.Modified;
+                db.Entry(testInstance).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("PendingCompounds");
+                return RedirectToAction("Index");
             }
-            return View(compound);
+            ViewBag.TestTypeID = new SelectList(db.TestTypes, "TestTypeID", "TestTypeDesc", testInstance.TestTypeID);
+            return View(testInstance);
         }
 
-        // GET: Compounds/Delete/5
+        // GET: TestInstances/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Compound compound = db.Compounds.Find(id);
-            if (compound == null)
+            TestInstance testInstance = db.TestInstances.Find(id);
+            if (testInstance == null)
             {
                 return HttpNotFound();
             }
-            return View(compound);
+            return View(testInstance);
         }
 
-        // POST: Compounds/Delete/5
+        // POST: TestInstances/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Compound compound = db.Compounds.Find(id);
-            db.Compounds.Remove(compound);
+            TestInstance testInstance = db.TestInstances.Find(id);
+            db.TestInstances.Remove(testInstance);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

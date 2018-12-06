@@ -36,6 +36,9 @@
             @Html.DisplayNameFor(model => model.ClientWeight)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.UnitOfMeasure.UnitDesc)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.MolecularMass)
         </th>
         <th>
@@ -80,6 +83,9 @@
             @Html.DisplayFor(modelItem => item.ClientWeight)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.UnitOfMeasure.UnitDesc)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.MolecularMass)
         </td>
         <td>
@@ -95,9 +101,9 @@
             @Html.DisplayFor(modelItem => item.DoseID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.LTNumber }) |
-            @Html.ActionLink("Details", "Details", new { id=item.LTNumber }) |
-            
+            @Html.ActionLink("Edit", "Edit", new { id = item.LTNumber }) |
+            @Html.ActionLink("Details", "Details", new { id = item.LTNumber }) |
+
         </td>
     </tr>
 }
