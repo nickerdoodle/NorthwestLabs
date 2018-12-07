@@ -23,11 +23,14 @@ namespace NorthwestLabs.Models
 
         public String CustCity { get; set; }
 
-        public int StateID { get; set; }
+        public virtual int? StateID { get; set; }
+        public virtual State state { get; set; }
+
 
         public String CustZip { get; set; }
 
         public int CountryID { get; set; }
+        public virtual Country country { get; set; }
 
         public String CustPhone { get; set; }
 
@@ -36,6 +39,7 @@ namespace NorthwestLabs.Models
         public String PaymentInfo { get; set; }
 
         public String CustUserName { get; set; }
+        public virtual CustomerLogin customerLogin { get; set; }
 
         public String Comments { get; set; }
 

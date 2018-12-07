@@ -1,0 +1,44 @@
+﻿@model NorthwestLabs.Models.CustomerLogin
+
+@{
+    ViewBag.Title = "Verify Information";
+}
+<h2>
+    Login Required to Request a Quote
+</h2>
+
+<div class="col-md-6">
+    <h4>
+        Existing Customer Login
+    </h4>
+    @using (Html.BeginForm())
+    {
+    <dl>
+        <dt>
+            @Html.LabelFor(model => model.CustUserName)
+        </dt>
+        <dd>
+            @Html.TextBoxFor(model => model.CustUserName)
+        </dd>
+        <dt>
+            @Html.LabelFor(model => model.CustPassword)
+        </dt>
+        <dd>
+            @Html.PasswordFor(model => model.CustPassword)
+        </dd>
+        <dd class="text-danger">@ViewBag.ErrorMessage</dd>
+    </dl>
+
+    <input type="submit" value="Login" class="btn btn-primary" />
+    }
+</div>
+<div class="col-md-6 text-center">
+    <h4>
+        Create An Account
+    </h4>
+    @Html.ActionLink("Create an Account", "CreateCustomer", null, new { @class = "btn btn-primary" })
+</div>
+
+
+
+

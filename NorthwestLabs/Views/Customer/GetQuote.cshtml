@@ -39,7 +39,7 @@
                     @Html.DisplayFor(modelItem => item.assayType.TypeDescription)
                 </td>
                 <td>
-                    <input type="checkbox" value="@item.AssayID" />
+                    <input type="checkbox" name="assaytype" value="@item.AssayID" />
                 </td>
             </tr>
         }
@@ -49,19 +49,18 @@
 {
     <input type="hidden" name="quoteAssays" id="quotes" />
     <input type="hidden" name="clientID" value="@ViewBag.ClientID" />
-
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Submit Quote" class="btn btn-primary" />
+        <div class="text-center">
+            <input type="submit" value="Submit Quote Request" onclick="submitQuote()" class="btn btn-primary btn-lg" />
         </div>
     </div>
 }
 <script>
-    var Assays = []
     function submitQuote() {
-        $("#Assay input:checkbox:checked").each(function () { Assays.push($(this).val());) };
-        for (iCount = 0; iCount < Assays.length; iCount++) {
-            document.getElementById("quotes").val += Assays[iCount] + ", ";
+        var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+        for (var i = 0; i < checkboxes.length; i++) {
+            document.getElementById("quotes").value += "," + checkboxes[i].value;
         }
-       
+    }
+
 </script>

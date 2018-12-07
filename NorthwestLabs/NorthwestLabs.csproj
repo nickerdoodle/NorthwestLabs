@@ -328,6 +328,8 @@
     <Content Include="Views\Materials\Edit.cshtml" />
     <Content Include="Views\Materials\Index.cshtml" />
     <Content Include="Views\Customer\QuoteConf.cshtml" />
+    <Content Include="Views\Customer\GetCustomerInfo.cshtml" />
+    <Content Include="Views\Customer\CreateCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -364,7 +366,6 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:61429/</IISUrl>
           <IISUrl>http://localhost:61289/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
