@@ -59,6 +59,7 @@ namespace NorthwestLabs.Controllers
         {
             String username = form["Username"].ToString();
             String password = form["Password"].ToString();
+            CustomerLogin customerLogin = db.CustomerLogins.Find(username);
 
             var currentCustomerUser = db.Database.SqlQuery<CustomerLogin>(
             "Select * " +
@@ -74,9 +75,7 @@ namespace NorthwestLabs.Controllers
 
             if (currentCustomerUser.Count() > 0)
             {
-                var id = db.Database.SqlQuery<Customer>("Select CustID " +
-                    "From Customer Inner Join CustomerLogin " +
-                    "On Customer.UserName = CustomerLogin.UserName;");
+                var id = customerLogin.CustID;
                 ViewBag.ClientID = id;
                 FormsAuthentication.SetAuthCookie(username, rememberMe);
                 return RedirectToAction("Index", "Home", new { userlogin = username });

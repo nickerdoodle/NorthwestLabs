@@ -14,7 +14,7 @@
 </div>
 
 <div class="row">
-    @Html.ActionLink("Get Quote", "GetQuote" ,"Customer", new { id = ViewBag.ClientID }, htmlAttributes: new { @class = "btn btn-block btn-primary", style = "font-size: large"})
+    @Html.ActionLink("Get Quote", "GetQuote" ,"Customer", new { id = @ViewBag.ClientID }, htmlAttributes: new { @class = "btn btn-block btn-primary", style = "font-size: large"})
     @Html.ActionLink("See Catalogs", "Index","Customer",null, htmlAttributes: new { @class = "btn btn-block btn-primary", style = "font-size: large" })
     @Html.ActionLink("View My Records", "ViewRecords","Customer",null, htmlAttributes: new { @class = "btn btn-block btn-primary", style = "font-size: large" })
     
