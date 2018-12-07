@@ -7,7 +7,7 @@
 <h2>Tests</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New Test", "Create")
 </p>
 <table class="table">
     <tr>
@@ -27,23 +27,12 @@
             @Html.DisplayNameFor(model => model.Approved)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateCompleted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BasePrice)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.DateScheduled)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Rerun)
+            @Html.DisplayNameFor(model => model.DateCompleted)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RerunComments)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Success)
-        </th>
+        
         <th></th>
     </tr>
 
@@ -65,26 +54,25 @@
             @Html.DisplayFor(modelItem => item.Approved)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateCompleted)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BasePrice)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.DateScheduled)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Rerun)
+            @Html.DisplayFor(modelItem => item.DateCompleted)
         </td>
+        
+            @Html.HiddenFor(modelItem => item.BasePrice)
+        
+
+        
+            @Html.HiddenFor(modelItem => item.Rerun)
+        
+            @Html.HiddenFor(modelItem => item.RerunComments)
+        
+            @Html.HiddenFor(modelItem => item.Success)
+        
         <td>
-            @Html.DisplayFor(modelItem => item.RerunComments)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Success)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TestInstanceID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TestInstanceID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.TestInstanceID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.TestInstanceID })
         </td>
     </tr>
 }
