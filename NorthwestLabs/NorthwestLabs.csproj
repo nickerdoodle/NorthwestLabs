@@ -303,6 +303,9 @@
     <Content Include="Views\Compounds\Index.cshtml" />
     <Content Include="Views\Compounds\PendingCompounds.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\PharmacologyCatalog.cshtml" />
+    <Content Include="Views\Customer\ProtocolCatalog.cshtml" />
+    <Content Include="Views\Customer\GetQuote.cshtml" />
     <Content Include="Views\TestInstances\Create.cshtml" />
     <Content Include="Views\TestInstances\Delete.cshtml" />
     <Content Include="Views\TestInstances\Details.cshtml" />
@@ -324,10 +327,11 @@
     <Content Include="Views\Materials\Details.cshtml" />
     <Content Include="Views\Materials\Edit.cshtml" />
     <Content Include="Views\Materials\Index.cshtml" />
+    <Content Include="Views\Customer\QuoteConf.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\" />
+    <Folder Include="Content\Images\Logo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -358,9 +362,10 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>60670</DevelopmentServerPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:60670/</IISUrl>
+          <IISUrl>http://localhost:61429/</IISUrl>
+          <IISUrl>http://localhost:61289/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

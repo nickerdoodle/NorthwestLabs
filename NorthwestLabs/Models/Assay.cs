@@ -14,13 +14,10 @@ namespace NorthwestLabs.Models
         public int AssayID { get; set; }
 
         public String Description { get; set; }
-
-        public String Protocol { get; set; }
-
+        
         public int? DaysToComplete { get; set; }
-
-        public DateTime? TimeReceived { get; set; }
-
+        
         public int AssayTypeID { get; set; }
+        public virtual AssayType assayType { get; set; }
     }
 }

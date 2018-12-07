@@ -12,7 +12,7 @@
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4>Log In Here</h4>
+                <h4>Current Customer Login</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
@@ -52,10 +52,12 @@
             }
         </section>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 text-center" >
+        
         <div class="container jumbotron jumbotron-gray">
+            <img src="~/Content/Images/Logo/nwlabslogo.png" alt="Northwest Labs Logo" />
             <h3>
-                Not a current customer? 
+                Not a current customer?
             </h3>
             <h6>
                 Click to learn more about our services and even get a custom quote
@@ -63,7 +65,7 @@
             <hr />
             <p class="text-center">
                 <a href=@Url.Action("Index", "Customer")>
-                    <input type="button" class="btn-primary btn" value="I would love to learn more!" />
+                    <input type="button" class="btn-primary btn" value="Get to Know Us" />
                 </a>
             </p>
         </div>
