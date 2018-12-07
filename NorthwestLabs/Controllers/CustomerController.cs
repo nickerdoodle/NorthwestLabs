@@ -43,15 +43,16 @@ namespace NorthwestLabs.Controllers
         {
             string username = form["CustUserName"].ToString();
             CustomerLogin login = db.CustomerLogins.Find(username);
-            var custID = db.Database.SqlQuery<Int32>("SELECT CustID FROM Customer WHERE CustUserName = " + login.CustUserName + ";");
-            int id = Convert.ToInt32(custID);
+            var id = login.CustID;
+            ViewBag.ClientID = id;
+            
             if (login == null)
             {
                 ViewBag.ErrorMessage = "Incorrect Login";
                 return View();
             }
 
-            return RedirectToAction("GetQuote", id);
+            return View("GetQuote", db.Assays.ToList());
         }
         [HttpGet]
         public ActionResult CreateCustomer()
@@ -95,66 +96,69 @@ namespace NorthwestLabs.Controllers
             String assays = form["quoteAssays"].ToString();
             String ClientID = form["ClientID"].ToString();
 
+            int id = Convert.ToInt32(ClientID);
+
             //Parse text for assay IDs
             String[] assayIDs = assays.Split(',');
-            List<int> listAssayIDs = new List<int>();
-            foreach (var assayID in assayIDs)
+            if (assayIDs.Length > 0)
             {
-                listAssayIDs.Add(Convert.ToInt32(assayID));
-            }
-
-            //Remove empty first item in list
-            listAssayIDs.Remove(listAssayIDs[0]);
-
-            //Get customer object for customerID
-            Customer customer = db.Customers.Find(ClientID);
-
-            //Add Assay descriptions to ViewBag
-            List<Assay> listAssays = new List<Assay>();
-            for (int i = 0; i < listAssayIDs.Count; i++)
-            {
-                listAssays.Add(db.Assays.Find(listAssayIDs[i]));
-                ViewBag.Assay[i] = listAssays[i].Description;
-            }
-
-
-            //Assign ViewBag for Customer Information
-            ViewBag.Name = customer.CustFirstName + " " + customer.CustLastName;
-            ViewBag.Email = customer.CustEmail;
-
-            //If Customer info not null, send emails to customer and sales dept
-            if (customer.CustFirstName != null && customer.CustEmail != null)
-            {
-                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
-
-
-                smtpClient.UseDefaultCredentials = false;
-                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtpClient.EnableSsl = true;
-                smtpClient.Credentials = new System.Net.NetworkCredential("labsnorthwest0@gmail.com", "byuIntex");
-                MailMessage Custmail = new MailMessage();
-
-                //Setting From , To and CC
-                Custmail.From = new MailAddress("labsnorthwest0@gmail.com", "Northwest Labs");
-                Custmail.To.Add(new MailAddress(customer.CustEmail));
-                Custmail.CC.Add(new MailAddress("labsnorthwest0@gmail.com"));
-                Custmail.Subject = "Northwest Labs Quote Request Submitted Successfully";
-                Custmail.Body = "Thank you, " + customer.CustFirstName + " " + customer.CustLastName + ", for contacting Northwest Labs! " +
-                    "<br/>The assays that your requested quotes for are as follows: <br /> <ul>";
-                foreach (var assay in listAssays)
+                List<int> listAssayIDs = new List<int>();
+                for (int i = 0; i < assayIDs.Length - 1; i++)
                 {
-                    Custmail.Body += "<li> " + assay.Description + "<li />";
+                    listAssayIDs.Add(Convert.ToInt32(assayIDs[i]));
                 }
-                Custmail.Body += "<ul /> A sales representative will review your request and respond promptly. <br /> Northwest Labs";
-                Custmail.BodyEncoding = Encoding.UTF8;
-                Custmail.IsBodyHtml = true;
+
+                //Get customer object for customerID
+                Customer customer = db.Customers.Find(id);
+
+                //Add Assay descriptions to ViewBag
+                List<Assay> listAssays = new List<Assay>();
+                for (int i = 0; i < listAssayIDs.Count; i++)
+                {
+                    listAssays.Add(db.Assays.Find(listAssayIDs[i]));
+                    ViewBag.Assay += "<li>" + listAssays[i].Description + " </li>";
+                }
 
 
-                smtpClient.Send(Custmail);
+                //Assign ViewBag for Customer Information
+                ViewBag.Name = customer.CustFirstName + " " + customer.CustLastName;
+                ViewBag.Email = customer.CustEmail;
+
+                //If Customer info not null, send emails to customer and sales dept
+                if (customer.CustFirstName != null && customer.CustEmail != null)
+                {
+                    SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+
+
+                    smtpClient.UseDefaultCredentials = false;
+                    smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    smtpClient.EnableSsl = true;
+                    smtpClient.Credentials = new System.Net.NetworkCredential("labsnorthwest0@gmail.com", "byuIntex");
+                    MailMessage Custmail = new MailMessage();
+
+                    //Setting From , To and CC
+                    Custmail.From = new MailAddress("labsnorthwest0@gmail.com", "Northwest Labs");
+                    Custmail.To.Add(new MailAddress(customer.CustEmail));
+                    Custmail.CC.Add(new MailAddress("labsnorthwest0@gmail.com"));
+                    Custmail.Subject = "Northwest Labs Quote Request Submitted Successfully";
+                    Custmail.Body = "Thank you, " + customer.CustFirstName + " " + customer.CustLastName + ", for contacting Northwest Labs! " +
+                        "<br/>The assays that your requested quotes for are as follows: <br /> <ul>";
+                    Custmail.Body += ViewBag.Assay;
+                    Custmail.Body += "</ul> <p>A sales representative will review your request and respond promptly.</p><br /> Northwest Labs";
+                    Custmail.BodyEncoding = Encoding.UTF8;
+                    Custmail.IsBodyHtml = true;
+
+
+                    smtpClient.Send(Custmail);
+                }
+
+                //Return Quote Request Confirmation View
+                return View("QuoteConf");
             }
-
-            //Return Quote Request Confirmation View
-            return View("QuoteConf");
+            ViewBag.ClientID = id;
+            ViewBag.ErrorMessage = "No Assays Selected for Quote";
+            return View(db.Assays.ToList());
         }
+            
     }
 }

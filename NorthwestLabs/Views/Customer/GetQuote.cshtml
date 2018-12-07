@@ -45,8 +45,9 @@
         }
     </table>
 </div>
-@using (Html.BeginForm())
+@using (Html.BeginForm("GetQuote", "Customer", FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
     <input type="hidden" name="quoteAssays" id="quotes" />
     <input type="hidden" name="clientID" value="@ViewBag.ClientID" />
     <div class="form-group">
@@ -59,7 +60,7 @@
     function submitQuote() {
         var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
         for (var i = 0; i < checkboxes.length; i++) {
-            document.getElementById("quotes").value += "," + checkboxes[i].value;
+            document.getElementById("quotes").value += checkboxes[i].value + ",";
         }
     }
 
