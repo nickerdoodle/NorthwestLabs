@@ -7,12 +7,12 @@
 <h2>Priority List</h2>
 
 <p>
-    @Html.ActionLink("Schedule Changes","Edit","Schedule")
+    @Html.ActionLink("Schedule Changes","Edit","Schedule") | @Html.ActionLink("All Work Orders", "Index", "WorkOrders")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Customer.CustID)
+            @Html.DisplayNameFor(model => model.CustID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CustInstructions)
@@ -29,11 +29,13 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
+    @if (Model != null)
+    {
+    foreach (var item in Model)
     {
         <tr>
             <td>
-                <a href="@Url.Action("Details","Customers", new { id = item.Customer.CustID }  )">@Html.DisplayFor(modelItem => item.Customer.CustID)</a>
+                <a href="@Url.Action("Details", "Customers", new { id = item.CustID })">@Html.DisplayFor(modelItem => item.CustID)</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CustInstructions)
@@ -53,6 +55,7 @@
                 @Html.ActionLink("Delete", "Delete", new { id = item.OrderID })
             </td>
         </tr>
+    }
     }
 
 </table>

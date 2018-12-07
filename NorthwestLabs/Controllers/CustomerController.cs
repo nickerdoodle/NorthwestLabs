@@ -43,7 +43,7 @@ namespace NorthwestLabs.Controllers
         {
             string username = form["CustUserName"].ToString();
             CustomerLogin login = db.CustomerLogins.Find(username);
-            var custID = db.Customers.SqlQuery("SELECT CustID FROM Customer WHERE CustUserName = " + login.CustUserName + ";");
+            var custID = db.Database.SqlQuery<Int32>("SELECT CustID FROM Customer WHERE CustUserName = " + login.CustUserName + ";");
             int id = Convert.ToInt32(custID);
             if (login == null)
             {

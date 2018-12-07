@@ -77,11 +77,14 @@ namespace NorthwestLabs.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             WorkOrder workOrder = db.WorkOrders.Find(id);
+            //workOrder.Customer.CustID = workOrder.CustID;
+
             if (workOrder == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CustID = new SelectList(db.Customers, "CustID", "CustFirstName", workOrder.CustID);
+            ViewBag.CustID = new SelectList(db.Customers, "CustID", "CustFirstName", workOrder.Customer.CustID);
+
             return View(workOrder);
         }
 
@@ -90,15 +93,30 @@ namespace NorthwestLabs.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OrderID,CustID,CustInstructions,SpecialDiscount,Priority,ShipDate")] WorkOrder workOrder)
+        public ActionResult Edit([Bind(Include = "OrderID, CustID,CustInstructions,SpecialDiscount,Priority,ShipDate")] WorkOrder workOrder)
         {
             if (ModelState.IsValid)
             {
+                //workOrder.Customer = db.Customers.Find(workOrder.CustID);
+                //db.Entry(workOrder).State = EntityState.Modified;
+                //db.Database.ExecuteSqlCommand(
+                //    "Update WorkOrder SET (CustInstructions, SpecialDiscount, Priority, ShipDate) " +
+                //    "values(" + workOrder.CustInstructions + ", " + workOrder.SpecialDiscount + ", " +
+                //    workOrder.Priority + ", " + workOrder.ShipDate + ") " +
+                //    "Where CustID = " + workOrder.CustID + ";");
+
+                //db.Database.ExecuteSqlCommand(
+                //    "Update WorkOrder SET CustInstructions = " + workOrder.CustInstructions +
+                //    ", SpecialDiscount = " + workOrder.SpecialDiscount +
+                //    ", Priority = " + workOrder.Priority +
+                //    ", ShipDate = " + workOrder.ShipDate +
+                //    " Where CustID = " + workOrder.CustID + 
+                //    " And OrderID = " + workOrder.OrderID + ";");
                 db.Entry(workOrder).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CustID = new SelectList(db.Customers, "CustID", "CustFirstName", workOrder.CustID);
+            ViewBag.CustID = new SelectList(db.Customers, "CustID", "CustFirstName", workOrder.Customer.CustID);
             return View(workOrder);
         }
 

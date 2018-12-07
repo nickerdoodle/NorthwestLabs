@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<NorthwestLabs.Models.Compound>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Compounds";
 }
 
-<h2>Index</h2>
+<h2>Compounds</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Pending Compounds", "PendingCompounds")
 </p>
 <table class="table">
     <tr>
@@ -32,27 +32,7 @@
         <th>
             @Html.DisplayNameFor(model => model.DateDue)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ClientWeight)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.WeightUnit.WeightUnitDesc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MolecularMass)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConfID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ActualWeight)
-        </th>
-        <th>
-           @* @Html.DisplayNameFor(model => model.ActualWeightUnitID)*@
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DoseID)
-        </th>
+        
         <th></th>
     </tr>
 
@@ -79,31 +59,26 @@
         <td>
             @Html.DisplayFor(modelItem => item.DateDue)
         </td>
+        
+            @Html.HiddenFor(modelItem => item.ClientWeight)
+        
+            @Html.HiddenFor(modelItem => item.WeightUnit.WeightUnitDesc)
+        
+            @Html.HiddenFor(modelItem => item.MolecularMass)
+        
+            @Html.HiddenFor(modelItem => item.ConfID)
+                    @Html.HiddenFor(modelItem => item.ActualWeight)
+       
+            @Html.HiddenFor(modelItem => item.WeightUnit.WeightUnitDesc)
+        
+            @Html.HiddenFor(modelItem => item.DoseID)
+        
         <td>
-            @Html.DisplayFor(modelItem => item.ClientWeight)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WeightUnit.WeightUnitDesc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MolecularMass)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConfID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ActualWeight)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WeightUnit.WeightUnitDesc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DoseID)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.LTNumber }) |
-            @Html.ActionLink("Details", "Details", new { id = item.LTNumber }) |
-
+          
+            <div class="btn-group-vertical">
+                @Html.ActionLink("Edit", "Edit", new { id = item.LTNumber }, new { @class = "btn btn-primary btn-group" }) 
+                @Html.ActionLink("More Details", "Details", new { id = item.LTNumber }, new { @class = "btn btn-primary btn-group" })
+            </div>
         </td>
     </tr>
 }

@@ -231,6 +231,7 @@
     <Compile Include="Models\TestMaterial.cs" />
     <Compile Include="Models\TestResult.cs" />
     <Compile Include="Models\TestType.cs" />
+    <Compile Include="Models\UniversalLogin.cs" />
     <Compile Include="Models\VolumeUnit.cs" />
     <Compile Include="Models\Wage.cs" />
     <Compile Include="Models\WeightUnit.cs" />
@@ -282,7 +283,7 @@
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
@@ -330,6 +331,8 @@
     <Content Include="Views\Customer\QuoteConf.cshtml" />
     <Content Include="Views\Customer\GetCustomerInfo.cshtml" />
     <Content Include="Views\Customer\CreateCustomer.cshtml" />
+    <Content Include="Views\Home\EmployeeIndex.cshtml" />
+    <Content Include="Views\Home\Stats.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

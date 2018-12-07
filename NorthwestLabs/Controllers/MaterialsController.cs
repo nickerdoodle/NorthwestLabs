@@ -85,7 +85,7 @@ namespace NorthwestLabs.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaterialID,MaterialType,QuantityOnHand,UnitID,CostID")] Material material)
+        public ActionResult Edit([Bind(Include = "MaterialID,MaterialDesc,QuantityOnHand,UnitID,CostID,WeightUnit,WeightUnitID")] Material material)
         {
             if (ModelState.IsValid)
             {

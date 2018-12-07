@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "EmployeeIndex";
+}
+
+<div class="jumbotron text-center">
+    <h2 style="font-weight: 700">
+        EMPLOYEE NAVIGATION MENU
+
+    </h2>
+    <p>
+        Select an Option
+    </p>
+
+</div>
+
+<div class="row">
+    @Html.ActionLink("Work Orders", "Index", "WorkOrders", null, htmlAttributes: new { @class = "btn btn-block btn-primary", style = "font-size: large" })
+    @Html.ActionLink("Tests", "Index", "TestInstances", null, htmlAttributes: new { @class = "btn btn-block btn-primary", style = "font-size: large" })
+    @Html.ActionLink("Materials", "Index", "Materials", null, htmlAttributes: new { @class = "btn btn-block btn-primary", style = "font-size: large" })
+    @Html.ActionLink("Compounds", "Index", "Compounds", null, htmlAttributes: new { @class = "btn btn-block btn-primary", style = "font-size: large" })
+    @Html.ActionLink("Statistics Report", "Stats", "Home", null, htmlAttributes: new { @class = "btn btn-block btn-primary", style = "font-size: large" })
+
+</div>
+
