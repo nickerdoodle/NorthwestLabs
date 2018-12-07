@@ -99,7 +99,7 @@ namespace NorthwestLabs.Controllers
             {
                 db.Entry(compound).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("PendingCompounds");
+                return RedirectToAction("Index");
             }
             return View(compound);
         }
