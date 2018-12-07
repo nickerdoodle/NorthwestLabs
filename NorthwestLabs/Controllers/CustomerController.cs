@@ -66,19 +66,20 @@ namespace NorthwestLabs.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateCustomer(Customer customer)
         {
-            if (ModelState.IsValid) 
-            {
-                customer.customerLogin.LastLogin = System.DateTime.Now;
-                customer.customerLogin.LastPasswordChange = System.DateTime.Now;
-                customer.customerLogin.CustUserName = customer.CustUserName;
-                db.CustomerLogins.Add(customer.customerLogin);
-                db.Customers.Add(customer);
-                db.SaveChanges();
-                int id = customer.CustID;
-                ViewBag.ClientID = id;
-                return View("GetQuote", db.Assays.ToList());
-            }
-            return View();
+            customer.customerLogin.CustUserName = customer.CustUserName;
+            
+            customer.customerLogin.LastLogin = System.DateTime.Now;
+            customer.customerLogin.LastPasswordChange = System.DateTime.Now;
+            customer.customerLogin.CustUserName = customer.CustUserName;
+            db.CustomerLogins.Add(customer.customerLogin);
+            db.Customers.Add(customer);
+            db.SaveChanges();
+            int id = customer.CustID;
+            ViewBag.ClientID = id;
+            return View("GetQuote", db.Assays.ToList());
+            /*ViewBag.StateID = new SelectList(db.States, "StateID", "StateDesc");
+            ViewBag.CountryID = new SelectList(db.Countries, "CountryID", "CountryDesc");
+            return View();*/
             
         }
 

@@ -11,6 +11,7 @@ namespace NorthwestLabs.Models
     public class TestFileType
     {
         [Key]
+
         public int TestFileTypeID { get; set; }
 
         public String TestFileTypeDesc { get; set; }

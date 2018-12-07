@@ -11,12 +11,16 @@ namespace NorthwestLabs.Models
     public class Assay
     {
         [Key]
+        [Display(Name ="Assay ID")]
         public int AssayID { get; set; }
 
+        [Display(Name = "Description")]
         public String Description { get; set; }
-        
+
+        [Display(Name = "Days To Complete")]
         public int? DaysToComplete { get; set; }
-        
+
+        [Display(Name = "Assay Type ID")]
         public int AssayTypeID { get; set; }
         public virtual AssayType assayType { get; set; }
     }

@@ -11,8 +11,10 @@ namespace NorthwestLabs.Models
     public class AssayType
     {
         [Key]
+        [Display(Name = "Assay Type ID")]
         public int AssayTypeID { get; set; }
 
+        [Display(Name = "Assay Type")]
         public String TypeDescription { get; set; }
     }
 }
