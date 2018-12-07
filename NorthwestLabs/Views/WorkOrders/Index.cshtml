@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<NorthwestLabs.Models.WorkOrder>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Work Orders";
 }
 
-<h2>Index</h2>
+<h2>Work Orders</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create") | @Html.ActionLink("View Priorities", "PriorityList")
@@ -49,7 +49,7 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
             @Html.ActionLink("Details", "Details", new { id=item.OrderID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OrderID })
+
         </td>
     </tr>
 }

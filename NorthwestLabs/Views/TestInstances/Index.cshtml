@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<NorthwestLabs.Models.TestInstance>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tests";
 }
 
-<h2>Index</h2>
+<h2>Tests</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -84,8 +84,7 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.TestInstanceID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TestInstanceID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TestInstanceID })
+            @Html.ActionLink("Details", "Details", new { id=item.TestInstanceID })
         </td>
     </tr>
 }
