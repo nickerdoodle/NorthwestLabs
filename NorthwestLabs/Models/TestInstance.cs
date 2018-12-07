@@ -12,29 +12,41 @@ namespace NorthwestLabs.Models
     public class TestInstance
     {
         [Key]
+        [Display(Name = "Test Instance ID")]
         public int TestInstanceID { get; set; }
 
+        [Display(Name = "Test Type")]
         public virtual int TestTypeID { get; set; }
         public virtual TestType TestType { get; set; }
 
+        [Display(Name = "Assay ID")]
         public int AssayID { get; set; }
 
+        [Display(Name = "Sequence ID")]
         public int SequenceID { get; set; }
 
+        [Display(Name = "Test Required")]
         public bool Required { get; set; }
 
+        [Display(Name = "Approved by Customer")]
         public bool Approved { get; set; }
 
+        [Display(Name = "Date Completed")]
         public DateTime DateCompleted { get; set; }
 
+        [Display(Name = "Base Price")]
         public Decimal BasePrice { get; set; }
 
+        [Display(Name = "Date Scheduled")]
         public DateTime DateScheduled { get; set; }
 
+        [Display(Name = "Needs to Be Rerun")]
         public bool Rerun { get; set; }
 
+        [Display(Name = "Comments on Rerun")]
         public String RerunComments { get; set; }
 
+        [Display(Name = "Success")]
         public bool Success { get; set; }
     }
 }

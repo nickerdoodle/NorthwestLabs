@@ -11,8 +11,10 @@ namespace NorthwestLabs.Models
     public class VolumeUnit
     {
         [Key]
+        [Display(Name = "Volume Unit ID")]
         public int VolumeUnitID { get; set; }
 
+        [Display(Name = "Volume Unit")]
         public String VolumeUnitDesc { get; set; }
 
         //public virtual ICollection<Compound> Compounds { get; set; }

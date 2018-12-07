@@ -11,8 +11,10 @@ namespace NorthwestLabs.Models
     public class WeightUnit
     {
         [Key]
+        [Display(Name = "Weight Unit ID")]
         public int WeightUnitID { get; set; }
 
+        [Display(Name = "Weight Unit")]
         public String WeightUnitDesc { get; set; }
 
         //public virtual ICollection<Compound> Compounds { get; set; }

@@ -14,7 +14,7 @@
             @using (Html.BeginForm("Login", "Home" , FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4>Current Customer Login</h4>
+                <h4>Current User Login</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">

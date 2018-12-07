@@ -11,6 +11,7 @@ namespace NorthwestLabs.Models
     public class Employee
     {
         [Key]
+        [Display(Name = "Employee ID")]
         public int EmpID { get; set; }
 
         public String EmpUserName { get; set; }
