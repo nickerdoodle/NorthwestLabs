@@ -11,13 +11,17 @@ namespace NorthwestLabs.Models
     public class TestMaterial
     {
         [Key]
+        [Display(Name = "Material ID")]
         public int MaterialID { get; set; }
 
         [Key]
+        [Display(Name = "Test Type ID")]
         public int TestTypeID { get; set; }
 
-        public float AmountRequired { get; set; }
+        [Display(Name = "Amount Required")]
+        public Double AmountRequired { get; set; }
 
+        [Display(Name = "Unit ID")]
         public int UnitID { get; set; }
     }
 }

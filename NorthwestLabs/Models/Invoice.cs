@@ -11,22 +11,31 @@ namespace NorthwestLabs.Models
     public class Invoice
     {
      [Key]
+        [Display(Name = "Invoice ID")]
         public int InvoiceID { get; set; }
 
+        [Display(Name = "Order ID")]
         public int OrderID { get; set; }
 
+        [Display(Name = "Payment Due")]
         public DateTime PaymentDueDate { get; set; }
 
+        [Display(Name = "Early Payment Date")]
         public DateTime EarlyPMTDate { get; set; }
 
-        public float EarlyPMTDiscount { get; set; }
+        [Display(Name = "Early Discount")]
+        public Double EarlyPMTDiscount { get; set; }
 
-        public float Price { get; set; }
+        [Display(Name = "Price")]
+        public Double Price { get; set; }
 
+        [Display(Name = "Date Charged")]
         public DateTime DateCharged { get; set; }
 
-        public float? Advance { get; set; }
+        [Display(Name = "Advance Payment")]
+        public Double? Advance { get; set; }
 
-        public float BalanceDue { get; set; }
+        [Display(Name = "Balance Due")]
+        public Double BalanceDue { get; set; }
     }
 }

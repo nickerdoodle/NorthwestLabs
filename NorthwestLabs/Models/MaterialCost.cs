@@ -11,12 +11,16 @@ namespace NorthwestLabs.Models
     public class MaterialCost
     {
         [Key]
+        [Display(Name = "Cost ID")]
         public int CostID { get; set; }
 
-        public float CostPerUnit { get; set; }
+        [Display(Name = "Cost per Unit")]
+        public Double CostPerUnit { get; set; }
 
+        [Display(Name = "Date Purchased")]
         public DateTime DatePurchased { get; set; }
 
+        [Display(Name = "Unit ID")]
         public String UnitID { get; set; }
     }
 }

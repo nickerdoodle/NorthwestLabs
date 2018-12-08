@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using NorthwestLabs.DAL;
 using NorthwestLabs.Models;
 
 namespace NorthwestLabs.Controllers
@@ -17,6 +20,8 @@ namespace NorthwestLabs.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+
+        private NorthwestLabsContext db = new NorthwestLabsContext();
 
         public AccountController()
         {
@@ -61,35 +66,112 @@ namespace NorthwestLabs.Controllers
             return View();
         }
 
-        //
-        // POST: /Account/Login
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
 
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+        [HttpPost]
+        public ActionResult Login(FormCollection form, bool rememberMe = false)
+        {
+            String username = form["Username"].ToString();
+            String password = form["Password"].ToString();
+
+            var currentCustomerUser = db.Database.SqlQuery<CustomerLogin>(
+            "Select * " +
+            "FROM CustomerLogin " +
+            "WHERE CustUserName = '" + username + "' AND " +
+            "CustPassword = '" + password + "'");
+
+            var currentEmployeeUser = db.Database.SqlQuery<EmployeeLogin>(
+            "Select * " +
+            "FROM EmployeeLogin " +
+            "WHERE EmpUserName = '" + username + "' AND " +
+            "EmpPassword = '" + password + "'");
+
+            if (currentCustomerUser.Count() > 0)
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                FormsAuthentication.SetAuthCookie(username, rememberMe);
+                return RedirectToAction("Index", "Home", new { userlogin = username });
+            }
+            else if (currentEmployeeUser.Count() > 0)
+            {
+                FormsAuthentication.SetAuthCookie(username, rememberMe);
+                return RedirectToAction("Index", "WorkOrders", new { userlogin = username });
+            }
+            {
+                return View();
             }
         }
+
+
+
+        [AllowAnonymous]
+        public ActionResult UniversalLogin()
+        {
+            
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult UniversalLogin(FormCollection form, bool rememberMe = false)
+        {
+            String username = form["Username"].ToString();
+            String password = form["Password"].ToString();
+
+            var currentCustomerUser = db.Database.SqlQuery<CustomerLogin>(
+            "Select * " +
+            "FROM CustomerLogin " +
+            "WHERE CustUserName = '" + username + "' AND " +
+            "CustPassword = '" + password + "'");
+
+            var currentEmployeeUser = db.Database.SqlQuery<EmployeeLogin>(
+            "Select * " +
+            "FROM EmployeeLogin " +
+            "WHERE EmpUserName = '" + username + "' AND " +
+            "EmpPassword = '" + password + "'");
+
+            if (currentCustomerUser.Count() > 0)
+            {
+                FormsAuthentication.SetAuthCookie(username, rememberMe);
+                return RedirectToAction("Index", "Home", new { userlogin = username });
+            }
+            else if (currentEmployeeUser.Count() > 0)
+            {
+                FormsAuthentication.SetAuthCookie(username, rememberMe);
+                return RedirectToAction("Index", "WorkOrders", new { userlogin = username });
+            }
+            {
+                return View();
+            }
+        }
+
+        //
+        // POST: /Account/Login
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(model);
+        //    }
+
+        //    // This doesn't count login failures towards account lockout
+        //    // To enable password failures to trigger account lockout, change to shouldLockout: true
+        //    var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+        //    switch (result)
+        //    {
+        //        case SignInStatus.Success:
+        //            return RedirectToLocal(returnUrl);
+        //        case SignInStatus.LockedOut:
+        //            return View("Lockout");
+        //        case SignInStatus.RequiresVerification:
+        //            return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+        //        case SignInStatus.Failure:
+        //        default:
+        //            ModelState.AddModelError("", "Invalid login attempt.");
+        //            return View(model);
+        //    }
+        //}
 
         //
         // GET: /Account/VerifyCode
@@ -403,25 +485,25 @@ namespace NorthwestLabs.Controllers
             return View();
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (_userManager != null)
-                {
-                    _userManager.Dispose();
-                    _userManager = null;
-                }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        if (_userManager != null)
+        //        {
+        //            _userManager.Dispose();
+        //            _userManager = null;
+        //        }
 
-                if (_signInManager != null)
-                {
-                    _signInManager.Dispose();
-                    _signInManager = null;
-                }
-            }
+        //        if (_signInManager != null)
+        //        {
+        //            _signInManager.Dispose();
+        //            _signInManager = null;
+        //        }
+        //    }
 
-            base.Dispose(disposing);
-        }
+        //    base.Dispose(disposing);
+        //}
 
         #region Helpers
         // Used for XSRF protection when adding external logins

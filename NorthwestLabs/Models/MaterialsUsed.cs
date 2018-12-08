@@ -11,13 +11,19 @@ namespace NorthwestLabs.Models
     public class MaterialsUsed
     {
         [Key]
-        public int MaterialID { get; set; }
+        [Display(Name = "Material ID")]
+        public virtual int MaterialID { get; set; }
+        public virtual ICollection<Material> Materials { get; set; }
 
         [Key]
-        public int TestInstanceID { get; set; }
+        [Display(Name = "Test Instance")]
+        public virtual int TestInstanceID { get; set; }
+        public virtual ICollection<TestInstance> TestInstances { get; set; }
 
-        public float AmountConsumed { get; set; }
+        [Display(Name = "Amount Consumed")]
+        public Double AmountConsumed { get; set; }
 
+        [Display(Name = "Unit ID")]
         public int UnitID { get; set; }
     }
 }

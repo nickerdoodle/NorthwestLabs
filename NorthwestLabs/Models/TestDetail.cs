@@ -11,11 +11,14 @@ namespace NorthwestLabs.Models
     public class TestDetail
     {
         [Key]
+        [Display(Name = "Test Instance ID")]
         public int TestInstanceID { get; set; }
 
         [Key]
+        [Display(Name = "Employee ID")]
         public int EmpID { get; set; }
 
-        public float EmpHours { get; set; }
+        [Display(Name = "Hours Worked")]
+        public Double EmpHours { get; set; }
     }
 }

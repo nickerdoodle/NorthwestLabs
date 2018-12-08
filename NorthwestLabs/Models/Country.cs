@@ -11,8 +11,10 @@ namespace NorthwestLabs.Models
     public class Country
     {
         [Key]
+        [Display(Name = "Country ID")]
         public int CountryID { get; set; }
 
+        [Display(Name = "Country")]
         public String CountryDesc { get; set; }
     }
 }

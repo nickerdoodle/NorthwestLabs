@@ -85,6 +85,17 @@
         </dd>
         <br />
         <dt>
+<<<<<<< HEAD
+=======
+            @Html.DisplayNameFor(model => model.WeightUnit.WeightUnitDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WeightUnit.WeightUnitDesc)
+        </dd>
+        <br />
+        <dt>
+>>>>>>> 6e94cac7de519f9c3d1928936fbed81fff02bdbf
             @Html.DisplayNameFor(model => model.MolecularMass)
         </dt>
 
@@ -109,11 +120,13 @@
         </dd>
         <br />
         <dt>
-            @Html.DisplayNameFor(model => model.ActualWeightUnitID)
+
+            @Html.DisplayNameFor(model => model.WeightUnit.WeightUnitDesc)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ActualWeightUnitID)
+            @Html.DisplayFor(model => model.WeightUnit.WeightUnitDesc)
+
         </dd>
         <br />
         <dt>
@@ -128,5 +141,7 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.LTNumber }) |
-    @Html.ActionLink("Back to List", "PendingCompounds")
+
+    @Html.ActionLink("Back to List", "Index")
+
 </p>

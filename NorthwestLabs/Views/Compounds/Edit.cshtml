@@ -15,13 +15,17 @@
     <h4>Compound</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-   @* @Html.HiddenFor(model => model.LTNumber)*@
+
+    @* @Html.HiddenFor(model => model.LTNumber)*@
+
 
     <div class="form-group">
         @Html.LabelFor(model => model.LTNumber, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DisplayFor(model => model.LTNumber, new { htmlAttributes = new { @class = "form-control" } })
-           
+
+            @Html.HiddenFor(model => model.LTNumber)
+
         </div>
     </div>
 
@@ -29,6 +33,9 @@
         @Html.LabelFor(model => model.OrderID, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DisplayFor(model => model.OrderID, new { htmlAttributes = new { @class = "form-control" } })
+
+            @Html.HiddenFor(model => model.OrderID)
+
         </div>
     </div>
 
@@ -36,6 +43,9 @@
         @Html.LabelFor(model => model.CompName, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DisplayFor(model => model.CompName, new { htmlAttributes = new { @class = "form-control" } })
+
+            @Html.HiddenFor(model => model.CompName)
+
         </div>
     </div>
 
@@ -48,12 +58,21 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.VolumeUnitID, htmlAttributes: new { @class = "control-label col-md-2" })
+
+        @Html.LabelFor(model => model.VolumeUnit.VolumeUnitDesc, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.VolumeUnitID, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.VolumeUnitID, "", new { @class = "text-danger" })
+            @Html.DropDownList("VolumeUnitID", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.VolumeUnit.VolumeUnitDesc, "", new { @class = "text-danger" })
         </div>
     </div>
+    @*<div class="form-group">
+        @Html.LabelFor(model => model.WeightUnit.WeightUnitDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("WeightUnitID", null, htmlAttributes: new { @class = "form-control" }))
+            @Html.ValidationMessageFor(model => model.ClientWeight, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
+
 
     <div class="form-group">
         @Html.LabelFor(model => model.DateArrived, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -88,6 +107,28 @@
     </div>
 
     <div class="form-group">
+
+        @Html.LabelFor(model => model.WeightUnit.WeightUnitDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("WeightUnitID", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ClientWeight, "", new { @class = "text-danger" })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(model => model.ActualWeight, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ActualWeight, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ActualWeight, "", new { @class = "text-danger" })
+            <p class="text-info" style="font-size: medium">*The Weight Unit in the Client Weight will be applied to the Actual Weight*</p>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+
         @Html.LabelFor(model => model.MolecularMass, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.MolecularMass, new { htmlAttributes = new { @class = "form-control" } })
@@ -95,27 +136,13 @@
         </div>
     </div>
 
+
     <div class="form-group">
         @Html.LabelFor(model => model.ConfID, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.ConfID, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ConfID, "", new { @class = "text-danger" })
-        </div>
-    </div>
+            @Html.DisplayFor(model => model.ConfID, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.HiddenFor(model => model.ConfID)
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ActualWeight, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ActualWeight, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ActualWeight, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ActualWeightUnitID, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ActualWeightUnitID, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ActualWeightUnitID, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -136,7 +163,9 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "PendingCompounds")
+
+    @Html.ActionLink("Back to List", "Index")
+
 </div>
 
 @section Scripts {

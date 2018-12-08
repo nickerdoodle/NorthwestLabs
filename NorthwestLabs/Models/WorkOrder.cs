@@ -11,16 +11,23 @@ namespace NorthwestLabs.Models
     public class WorkOrder
     {
         [Key]
+        [Display(Name = "Order ID")]
         public int OrderID { get; set; }
 
-        public int CustID { get; set; }
+        [Display(Name = "Customer ID")]
+        public virtual int? CustID { get; set; }
+        public virtual Customer Customer { get; set; }
 
+        [Display(Name = "Customer Instructions")]
         public String CustInstructions { get; set; }
 
+        [Display(Name = "Special Discount")]
         public bool SpecialDiscount { get; set; }
 
+        [Display(Name = "Priority/Back-Ordered?")]
         public bool Priority { get; set; }
 
+        [Display(Name = "Date Shipped")]
         public DateTime? ShipDate { get; set; }
     }
 }

@@ -11,8 +11,10 @@ namespace NorthwestLabs.Models
     public class Confirmation
     {
         [Key]
+        [Display(Name = "Confirmation ID")]
         public int ConfID { get; set; }
 
+        [Display(Name = "Date Confirmation")]
         public DateTime DateTime { get; set; }
     }
 }

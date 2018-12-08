@@ -11,10 +11,13 @@ namespace NorthwestLabs.Models
     public class State
     {
         [Key]
+        [Display(Name = "State ID")]
         public int StateID { get; set; }
 
+        [Display(Name = "State")]
         public String StateDesc { get; set; }
 
+        [Display(Name = "Country ID")]
         public int CountryID { get; set; }
     }
 }
